@@ -1,6 +1,6 @@
 /vendor
 /.idea
-/Models
+/app/Models
 Homestead.json
 Homestead.yaml
 .env
