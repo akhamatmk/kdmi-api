@@ -20,6 +20,7 @@ class SubscriberController extends ApiController
     		$rules
 		);
 		
+		
 		if ($validator->fails())
 			return $this->response()->error($validator->errors()->all());	
 
