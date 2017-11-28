@@ -23,9 +23,31 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
 
-// $app->withEloquent();
+// Load configuration files
+$app->configure('cors');
+$app->configure('jwt');
+
+
+$app->withFacades(true, [
+    Tymon\JWTAuth\Facades\JWTAuth::class => 'JWTAuth',
+    Tymon\JWTAuth\Facades\JWTFactory::class => 'JWTFactory'
+]);
+
+$app->withEloquent();
+
+$app->middleware([
+    Barryvdh\Cors\HandleCors::class,
+]);
+
+$app->routeMiddleware([
+    'cors'    => \App\Http\Middleware\FormattingRequestMiddleware::class,
+]);
+
+
+$app->register(Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class);
+$app->register(\Barryvdh\Cors\LumenServiceProvider::class);
+
 
 /*
 |--------------------------------------------------------------------------

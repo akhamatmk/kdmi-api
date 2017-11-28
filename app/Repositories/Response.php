@@ -47,7 +47,7 @@ class Response extends ResponseFactory
 
         $response = $this->generateStructureNonTransformer($data, $attribute);
 
-        return $this->json([$response], $status, $headers, $options);
+        return $this->json($response, $status, $headers, $options);
     }
 
     /**
@@ -73,7 +73,7 @@ class Response extends ResponseFactory
 
         $response = $this->generateStructureNonTransformer([], $attribute);
 
-        return $this->json([$response], $header_status, $headers, $options);
+        return $this->json($response, $header_status, $headers, $options);
     }
 
     /**
